@@ -25,6 +25,8 @@ class TerminalView: UIView {
 	
 	let deviceName = UIDevice.current.name
 	let textView = UITextView()
+    
+    let historyToolbar = UIToolbar()
 	
 	let keyboardObserver = KeyboardObserver()
 	
@@ -105,7 +107,20 @@ class TerminalView: UIView {
 			}, completion: nil)
 			
 		}
-		
+    
+        textView.inputAccessoryView = historyToolbar
+        
+        
+        let prev = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 104)!, target: nil, action: nil)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let next = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 103)!, target: nil, action: nil)
+        
+        
+        historyToolbar.tintColor = .green
+        historyToolbar.barTintColor = UIColor.black
+        
+        historyToolbar.sizeToFit()
+        historyToolbar.setItems([prev, flexSpace, next], animated: true)
 	}
 	
 	@discardableResult
